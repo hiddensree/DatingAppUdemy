@@ -1,0 +1,12 @@
+Entity Framework Features
+
+Querying
+Change Tracking
+Saving
+Concurrency
+Transactions
+Caching
+Built-in conventions
+Configurations
+Migrations
+
