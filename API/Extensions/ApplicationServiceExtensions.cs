@@ -1,4 +1,5 @@
 using API.Data;
+using API.Helpers;
 using API.Interfaces;
 using API.Services;
 using Microsoft.EntityFrameworkCore;
@@ -24,6 +25,8 @@ public static class ApplicationServiceExtensions
         });
         services.AddCors(); // Allow cross-origin requests
         services.AddScoped<ITokenService, TokenService>(); // Each time ITokenService is requested, a new instance of TokenService is created 
+        services.AddScoped<IUserRepository, UserRepository>(); // Each time IUserRepository is requested, a new instance of UserRepository is created
+        services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies()); // Add AutoMapper to the project
 
         return services;
     }
