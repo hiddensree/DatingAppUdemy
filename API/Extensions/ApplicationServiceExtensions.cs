@@ -26,7 +26,9 @@ public static class ApplicationServiceExtensions
         services.AddCors(); // Allow cross-origin requests
         services.AddScoped<ITokenService, TokenService>(); // Each time ITokenService is requested, a new instance of TokenService is created 
         services.AddScoped<IUserRepository, UserRepository>(); // Each time IUserRepository is requested, a new instance of UserRepository is created
+        services.AddScoped<IPhotoService, PhotoService>();
         services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies()); // Add AutoMapper to the project
+        services.Configure<CloudinarySettings>(config.GetSection("CloudinarySettings"));
 
         return services;
     }

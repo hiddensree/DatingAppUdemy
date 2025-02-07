@@ -5,11 +5,12 @@ import { MembersService } from '../../_services/members.service';
 import { TabsModule } from 'ngx-bootstrap/tabs';
 import { FormsModule, NgForm } from '@angular/forms';
 import { ToastrModule, ToastrService } from 'ngx-toastr';
+import { PhotoEditorComponent } from "../photo-editor/photo-editor.component";
 
 @Component({
   selector: 'app-member-edit',
   standalone: true,
-  imports: [TabsModule, FormsModule, ToastrModule],
+  imports: [TabsModule, FormsModule, ToastrModule, PhotoEditorComponent],
   templateUrl: './member-edit.component.html',
   styleUrl: './member-edit.component.css'
 })
@@ -22,7 +23,7 @@ export class MemberEditComponent implements OnInit{
     }
 
   }
-  member?: Member;
+  member?: Member; // 
   private accountService = inject(AccountService)
   private memberService = inject(MembersService)
   private toastr = inject(ToastrService)
@@ -46,5 +47,9 @@ export class MemberEditComponent implements OnInit{
         this.editForm?.reset(this.member);
       }
     })
+  }
+
+  onMemberChanged(event: Member){ // event is the member changed 
+    this.member = event;
   }
 }
